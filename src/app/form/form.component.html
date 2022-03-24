@@ -1,0 +1,66 @@
+<h2 class="mt-5 text-center">Hi !</h2>
+<div class="text-center">
+  <button routerLink="/clients" class="btn btn-primary mt-4 p-3">All Clients</button>
+</div>
+<form class="w-50 mx-auto mt-5" [formGroup]="myForm" (submit)="add($event)">
+  <div class="mb-3">
+    <label for="firstName" class="form-label">First Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="firstName"
+      name="firstName"
+      formControlName="firstName"
+      required
+      minlength="3"
+      maxlength="20"
+    />
+    <div *ngIf="myForm.controls['firstName'].errors">
+      <div
+        *ngIf="myForm.controls['firstName'].errors?.['minlength']"
+        class="alert alert-danger"
+      >
+        Name minimum length is 3 chars ...
+      </div>
+      <div
+        *ngIf="myForm.controls['firstName'].errors?.['maxlength']"
+        class="alert alert-danger"
+      >
+        Name maximum length is 20 chars ...
+      </div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="lastName" class="form-label">Last Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="lastName"
+      formControlName="lastName"
+      required
+    />
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input
+      type="email"
+      class="form-control"
+      id="exampleInputEmail1"
+      formControlName="email"
+      pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$ "
+      required
+    />
+    <div
+      *ngIf="myForm.controls['email'].errors?.['required']"
+      class="alert alert-danger"
+    >
+      Email is required
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="city" class="form-label">City</label>
+    <input type="text" class="form-control" id="city" formControlName="city" />
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

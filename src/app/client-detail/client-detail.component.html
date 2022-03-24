@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="my-5">
+        <button [routerLink]="['/clients']" routerLinkActive="router-link-active" class="btn btn-primary">All Clients</button>
+    </div>
+    <div class="text-center">
+        <h1>Client Number: {{client.id}}</h1>
+        <div class="card mx-auto mt-5" style="width: 18rem;">
+            <img src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{client.firstName}} - {{client.lastName}}</h5>
+              <p class="card-text">City: {{client.city}}</p>
+              <p class="card-text">Email: {{client.email}}</p>  
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="text-center">
+    <h1>ALL CLIENTS:</h1>
+</div>
+<button routerLink="/form" class="btn btn-primary mt-4 p-3">Create Client</button>
+<table class="table mt-5 table-dark text-center">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">City</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let client of clients">
+      <tr>
+        <th scope="row">1</th>
+        <td>{{client.firstName}}</td>
+        <td>{{client.lastName}}</td>
+        <td>{{client.email}}</td>
+        <td>{{client.city}}</td>
+        <td>
+            <button class="btn btn-primary"  [routerLink]="['/client', client.id]">View</button>
+            <button class="btn btn-danger mx-3" (click)="deleteClient(client.id)">Delete</button>
+            <button class="btn btn-warning" [routerLink]="['/edit', client.id]" >Edit</button>
+        </td>
+      </tr>
+    </tbody>
+</table>

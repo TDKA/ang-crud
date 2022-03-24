@@ -1,0 +1,69 @@
+<form (ngSubmit)="onSubmit()" name="inscriptionForm" #f="ngForm">
+  <h1>{{ message }}</h1>
+  <div class="mb-3">
+    <label for="exampleInputNOM" class="form-label">First Name :</label>
+    <input
+      type="text"
+      class="form-control"
+      id="exampleInputNOM"
+      name="firstName"
+      [(ngModel)]="inscriptionForm.firstName"
+      #firstName="ngModel"
+      required
+      minlength="3"
+      maxlength="20"
+    />
+    <div class="alert-danger" *ngIf="firstName.errors && f.submitted">
+      <div *ngIf="firstName.errors?.['required']">firstName is required</div>
+      <div *ngIf="firstName.errors?.['minlength']">
+        firstName must be at least 3 characters
+      </div>
+      <div *ngIf="firstName.errors?.['maxlength']">
+        firstName must be at most 20 characters
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputlastName" class="form-label">lastName :</label>
+    <input
+      type="email"
+      class="form-control"
+      id="exampleInputlastName"
+      name="lastName"
+      [(ngModel)]="inscriptionForm.lastName"
+      #lastName="ngModel"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input
+      type="email"
+      class="form-control"
+      id="exampleInputEmail1"
+      name="email"
+      [(ngModel)]="inscriptionForm.email"
+      #email="ngModel"
+      required
+      email
+    />
+    <div class="alert-danger" *ngIf="email.errors && f.submitted">
+      <div *ngIf="email.errors?.['required']">Email is required</div>
+      <div *ngIf="email.errors?.['email']">
+        Email must be a valid email address
+      </div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputcity" class="form-label">city</label>
+    <input
+      type="text"
+      class="form-control"
+      id="exampleInputcity"
+      name="city"
+      [(ngModel)]="inscriptionForm.city"
+      #city="ngModel"
+    />
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
